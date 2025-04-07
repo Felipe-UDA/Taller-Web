@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+</head>
+<body bgcolor="3386ff">
+    <font color="black">
+        <!-- Encabezado y navegación -->
+        <header>
+            <nav>
+                <table width="90%" align="center">
+                    <tr>
+                        <td><img src="/Imagenes/logoweno.png" alt="Logo" width="80"></td>
+                        <td align="right">
+                            <a href="inicio.html">Inicio</a> |
+                            <a href="contacto.html"><b>Contacto</b></a>
+                        </td>
+                    </tr>
+                </table>
+            </nav>
+        </header>
+
+        <!-- Contenido principal -->
+        <main>
+            <section>
+                <img src="/Imagenes/banner.webp" alt="Imagen principal" width="100%">
+            </section>
+
+            <br><br>
+
+            <!-- Formulario de contacto -->
+            <section>
+                <table align="center" with="100%">
+                    <tr>
+                        <td><label for="nombre">Nombres:</label></td>
+                        <td>
+                            <input type="text" id="nombre" placeholder="Nombre">
+                            <input type="text" placeholder="Apellido">
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td><label for="email">Email:</label></td>
+                        <td><input type="email" id="email" placeholder="correo"></td>
+                    </tr>
+            
+                    <tr>
+                        <td><label for="telefono">Teléfono:</label></td>
+                        <td>
+                            <input type="text" value="+569" size="4" readonly>
+                            <input type="text" id="telefono" placeholder="999999999">
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><label for="fecha">Fecha de nacimiento:</label></td>
+                        <td>
+                            <input type="date" id="fecha" name="fecha">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label>Género:</label></td>
+                        <td>
+                            <input type="radio" id="hombre" name="genero" value="hombre">
+                            <label for="hombre">Hombre</label>
+                            <input type="radio" id="mujer" name="genero" value="mujer">
+                            <label for="mujer">Mujer</label>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="slider">Satisfacción con la consola:</label></td>
+                        <td>
+                            1
+                            <input type="range" id="slider" name="slider" min="1" max="10" value="5">
+                            10
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="color">Color favorito:</label></td>
+                        <td>
+                            <input type="color" id="color" name="color">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="archivo">Subir Curriculum:</label></td>
+                        <td>
+                            <input type="file" id="archivo" name="archivo">
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td><label for="asunto">Asunto:</label></td>
+                        <td>
+                            <select id="asunto">
+                                <option>Pregunta</option>
+                                <option>Informe</option>
+                                <option>Otro</option>
+                            </select>
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td><label for="mensaje">Mensaje:</label></td>
+                        <td><textarea id="mensaje" rows="5" cols="40"></textarea></td>
+                    </tr>
+            
+                    <tr>
+                        <td colspan="2" align="center">
+                            <button type="submit">Enviar</button>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            
+            <br><br>
+
+            <!-- Sección de enlaces y redes sociales -->
+            <footer style="border: 2px solid black; padding: 10px; margin-top: 20px;">
+                <section>
+                    <table width="100%">
+                        <tr>
+                            <td>
+                                <p>Links</p>
+                                <ul>
+                                    <li><a href="#">Contacto</a></li>
+                                    <li><a href="#">Preguntas Frecuentes</a></li>
+                                    <li><a href="#">Juegos</a></li>
+                                </ul>
+                            </td>
+                            <td>
+                                <p>Redes Sociales</p>
+                                <ul>
+                                    <li><a href="#">Instagram</a></li>
+                                    <li><a href="#">Facebook</a></li>
+                                    <li><a href="#">YouTube</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+                
+            </footer>
+            <br>
+
+    <section align="center" style="border:2px solid black;">
+        <p>© Felipe Monardes 2025</p>
+    </section>
+        </main>
+    </font>
+</body>
+</html>
