@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página de Inicio</title>
+    <link rel="stylesheet" href="/CSS/inicio_style.css">
+    <link rel="stylesheet" href="/CSS/botones.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
 </head>
 <body bgcolor="3386ff">
     <font color="black">
@@ -14,9 +17,9 @@
                     <tr>
                         <td><img src="/Imagenes/logoweno.png" alt="Logo" width="80"></td>
                         <td align="right">
-                            <a href="inicio.html">Inicio</a> |
-                            <a href="contacto.html"><b>Contacto</b></a>
-                            <a href="login.html"><b>Login</b></a>
+                            <a href="inicio.html" class="button_slide slide_left">Inicio</a>
+                            <a href="contacto.html" class="button_slide slide_left">Contacto</a>
+                            <a href="login.html" class="button_slide slide_left">Login</a> |
                         </td>
                     </tr>
                 </table>
@@ -29,65 +32,127 @@
                 <img src="/Imagenes/banner.webp" alt="Imagen principal" width="100%">
             </section>
             
-            <section>
-                <table width="100%" cellspacing="0" cellpadding="5">
-                    <tr>
-                        <td>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <br>
-                            <video width="500" muted loop autoplay hspace="100" vspace="100">
-                                <source src="/Imagenes/revelacionPS5.mp4" type="video/mp4">
-                                Tu navegador no soporta video.
-                            </video>
-                            <br><br><br><br>
-                            <img src="/Imagenes/ps5.webp" alt="Imagen adicional" width="500">
-                        </td>
-                        <td style="font-size: 20px; width: 60%;"> 
-                            <h2>PlayStation 5: La Nueva Generación de Consolas</h2>
-                            <p>La PlayStation 5 (PS5), <font color="red">lanzada</font> por Sony en 2020, representa un gran salto en el mundo de los videojuegos. Equipada con un potente procesador AMD Ryzen Zen 2 y una GPU RDNA 2, ofrece gráficos impresionantes con resolución 4K, trazado de rayos (ray tracing) y tasas de refresco de hasta 120 FPS.</p>
-                        </td>
-                    </tr>
-                </table>
-            </section>
+            <section class="ps5-hero">
+                <video autoplay muted loop class="video-bg">
+                  <source src="/Imagenes/revelacionPS5.mp4" type="video/mp4">
+                  Tu navegador no soporta video.
+                </video>
+                <div class="overlay"></div>
+                <div class="ps5-content">
+                  <h2>PlayStation 5: La Nueva Generación de Consolas</h2>
+                  <p>
+                    La <strong>PlayStation 5 (PS5)</strong>, <span class="highlight">lanzada</span> por Sony en 2020, representa un gran salto en el mundo de los videojuegos. 
+                    Equipada con un potente procesador <em>AMD Ryzen Zen 2</em> y una GPU <em>RDNA 2</em>, ofrece gráficos impresionantes con resolución 4K, 
+                    trazado de rayos (ray tracing) y tasas de refresco de hasta 120 FPS.
+                  </p>
+                </div>
+              </section>
             
             
             <br><br>
-            <section>
-                <img src="/Imagenes/banner2.jpeg" alt="Imagen grande" width="100%">
-            </section>
+            
+
+            <div class="news-section">
+                <div class="news-grid">
+                    <div class="news-card">
+                        <img src="/Imagenes/God-of-War-Ragnarok.webp" alt="Noticia 1">
+                        <div class="news-text">
+                            <h5>God of War Ragnarok</h5>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="/Imagenes/the_last_of_us.jpg" alt="Noticia 2">
+                        <div class="news-text">
+                            <h5>The Last of Us</h5>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="/Imagenes/Gran-turismo-7.webp" alt="Noticia 3">
+                        <div class="news-text">
+                            <h5>Gran Turismo 7</h5>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="/Imagenes/ratchet-clank.jpg" alt="Noticia 4">
+                        <div class="news-text">
+                            <h5>Ratchet and Clank</h5>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="/Imagenes/bloodborne.jpg" alt="Noticia 5">
+                        <div class="news-text">
+                            <h5>Bloodborne</h5>
+                        </div>
+                    </div>
+                    <div class="news-card">
+                        <img src="/Imagenes/astrobot.jpg" alt="Noticia 6">
+                        <div class="news-text">
+                            <h5>AstroBot</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
     
     <!-- Footer -->
-    <footer style="border: 2px solid black; padding: 10px; margin-top: 20px;">
-        <section>
-            <table width="100%">
-                <tr>
-                    <td>
-                        <p>Links</p>
-                        <ul>
-                            <li><a href="#">Contacto</a></li>
-                            <li><a href="#">Preguntas Frecuentes</a></li>
-                            <li><a href="#">Juegos</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <p>Redes Sociales</p>
-                        <ul>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">YouTube</a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </section>
-    </footer>
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h4>Inicio</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Contacto>
+              <li><a href="#">Consolas</a></li>
+              <li><a href="#">Accesorios</a></li>
+              <li><a href="#">PlayShop</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>PS PLUS</h4>
+            <ul>
+              <li><a href="#">Juegos</a></li>
+              <li><a href="#">Membresias</a></li>
+              <li><a href="#">Preguntas</a></li>
+              <li><a href="#">Ayuda</a></li>
+              
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Nosotros</h4>
+            <ul>
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Historia</a></li>
+              <li><a href="#">no se</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>CONTACTO</h4>
+            <ul>
+              <li><a href="#">Telefono</a></li>
+              <li><a href="#">Correo</a></li>
+            </ul>
+            <div class="social-icons">
+              <span class="circle-icon"></span>
+              <span class="circle-icon"></span>
+              <span class="circle-icon star"></span>
+            </div>
+          </div>
+          <div class="footer-column logo-area">
+            <h3>PlayStation</h3>
+            <p>¿Listo Para Empezar a Jugar?</p>
+            <div class="buttons">
+              <a href="#" class="login">LOGIN</a>
+              <a href="#" class="create-account">CREAR CUENTA</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Felipe Monardes 2025</p>
+        </div>
+      </footer>
 
     <br>
 
-    <section align="center" style="border:2px solid black;">
-        <p>© Felipe Monardes 2025</p>
-    </section>
     </font>
 </body>
 </html>

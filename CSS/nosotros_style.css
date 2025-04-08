@@ -54,29 +54,22 @@ nav a:hover {
     flex-direction: row;
 }
 
-/* Estilo para palabras en rojo */
-.rojo {
-    color: red;
-    font-weight: bold;
-}
-
 /* Estilos específicos para el cuadro */
 .cuadro {
-    display: flex; /* Usar flexbox para distribuir las imágenes */
+    display: flex; 
     justify-content: center;
     align-items: center;
     border: 2px solid black;
-    padding: 50px; /* Aumenta el padding para hacer el cuadro más grande */
-    width: 80%; /* O define un ancho fijo como 600px */
+    padding: 50px; 
+    width: 80%; 
     margin: 0 auto;
-    gap: 20px; /* Ajusta la distancia entre las imágenes */
+    gap: 20px; /* distancia entre las imágenes */
 }
 
-/* Asegurarse de que las imágenes tengan el mismo tamaño */
 .cuadro img {
-    width: 300px; /* Establecer el mismo tamaño para todas las imágenes */
-    height: 300px; /* Asegurarse de que todas tengan la misma altura */
-    object-fit: contain; /* Mantener la proporción de las imágenes */
+    width: 300px; 
+    height: 300px; 
+    object-fit: contain; /* proporción de las imagenes */
 }
 
 /* Mapa y texto */
@@ -90,20 +83,19 @@ nav a:hover {
 
 /* Estilo para el mapa */
 .mapa-contenedor iframe {
-    width: 60%;  /* Ajusta el tamaño del mapa */
+    width: 60%;  
     height: 450px;
     border: 0;
+    margin: 10px;
 }
 
-/* Estilo para el texto */
+/* estilo para el texto */
 .mapa-contenedor .texto-mapa {
-    width: 35%;  /* Ajusta el tamaño del texto */
-    padding-left: 20px;  /* Espacio entre mapa y texto */
+    width: 35%;  
+    padding-left: 20px;
 }
 
 .mapa-contenedor .texto-mapa p {
     font-size: 16px;
     color: #333;
 }
-
-
