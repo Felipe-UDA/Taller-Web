@@ -4,21 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/inicio_style.css">
+    <link rel="stylesheet" href="/CSS/botones.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <style>
+        body {
+            background-color: #3386ff; 
+        }
+    </style>
+
 </head>
 <body bgcolor="3386ff">
     <font color="black">
         <!-- Encabezado y navegación -->
-        <header>
-            <nav>
-                <table width="90%" align="center">
-                    <tr>
-                        <td><img src="/Imagenes/logoweno.png" alt="Logo" width="80"></td>
-                        <td align="right">
-                            <a href="inicio.html">Inicio</a> |
-                            <a href="contacto.html"><b>Contacto</b></a>
-                        </td>
-                    </tr>
-                </table>
+        <header class="bg-light py-2">
+            <nav class="container d-flex justify-content-between align-items-center">
+              <img src="/Imagenes/logoweno.png" alt="Logo" width="80">
+          
+              <div>
+                <a href="inicio.html" class="btn btn-primary me-2">Inicio</a>
+                <a href="contacto.html" class="btn btn-primary me-2">Contacto</a>
+                <a href="login.html" class="btn btn-primary">Login</a>
+              </div>
             </nav>
         </header>
 
@@ -32,120 +40,160 @@
 
             <!-- Formulario de contacto -->
             <section>
-                <table align="center" with="100%">
-                    <tr>
-                        <td><label for="nombre">Nombres:</label></td>
-                        <td>
-                            <input type="text" id="nombre" placeholder="Nombre">
-                            <input type="text" placeholder="Apellido">
-                        </td>
-                    </tr>
+                <form class="container mt-5">
+                    <div class="mb-3 row">
+                        <label for="nombre" class="col-sm-2 col-form-label">Nombres:</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="nombre" class="form-control mb-2" placeholder="Nombre">
+                            <input type="text" class="form-control" placeholder="Apellido">
+                        </div>
+                    </div>
             
-                    <tr>
-                        <td><label for="email">Email:</label></td>
-                        <td><input type="email" id="email" placeholder="correo"></td>
-                    </tr>
+                    <div class="mb-3 row">
+                        <label for="email" class="col-sm-2 col-form-label">Email:</label>
+                        <div class="col-sm-10">
+                            <input type="email" id="email" class="form-control" placeholder="correo">
+                        </div>
+                    </div>
             
-                    <tr>
-                        <td><label for="telefono">Teléfono:</label></td>
-                        <td>
-                            <input type="text" value="+569" size="4" readonly>
-                            <input type="text" id="telefono" placeholder="999999999">
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td><label for="fecha">Fecha de nacimiento:</label></td>
-                        <td>
-                            <input type="date" id="fecha" name="fecha">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><label>Género:</label></td>
-                        <td>
-                            <input type="radio" id="hombre" name="genero" value="hombre">
-                            <label for="hombre">Hombre</label>
-                            <input type="radio" id="mujer" name="genero" value="mujer">
-                            <label for="mujer">Mujer</label>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="slider">Satisfacción con la consola:</label></td>
-                        <td>
-                            1
-                            <input type="range" id="slider" name="slider" min="1" max="10" value="5">
-                            10
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="color">Color favorito:</label></td>
-                        <td>
-                            <input type="color" id="color" name="color">
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <td><label for="archivo">Subir Curriculum:</label></td>
-                        <td>
-                            <input type="file" id="archivo" name="archivo">
-                        </td>
-                    </tr>
+                    <div class="mb-3 row">
+                        <label for="telefono" class="col-sm-2 col-form-label">Teléfono:</label>
+                        <div class="col-sm-10 d-flex">
+                            <input type="text" value="+569" class="form-control w-auto" size="4" readonly>
+                            <input type="text" id="telefono" class="form-control" placeholder="999999999">
+                        </div>
+                    </div>
             
-                    <tr>
-                        <td><label for="asunto">Asunto:</label></td>
-                        <td>
-                            <select id="asunto">
+                    <div class="mb-3 row">
+                        <label for="fecha" class="col-sm-2 col-form-label">Fecha de nacimiento:</label>
+                        <div class="col-sm-10">
+                            <input type="date" id="fecha" class="form-control">
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label class="col-sm-2 col-form-label">Género:</label>
+                        <div class="col-sm-10">
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="hombre" name="genero" value="hombre" class="form-check-input">
+                                <label for="hombre" class="form-check-label">Hombre</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" id="mujer" name="genero" value="mujer" class="form-check-input">
+                                <label for="mujer" class="form-check-label">Mujer</label>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label for="slider" class="col-sm-2 col-form-label">Satisfacción con la consola:</label>
+                        <div class="col-sm-10">
+                            <label>1</label>
+                            <input type="range" id="slider" name="slider" min="1" max="10" value="5" class="form-range">
+                            <label>10</label>
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label for="color" class="col-sm-2 col-form-label">Color favorito:</label>
+                        <div class="col-sm-10">
+                            <input type="color" id="color" class="form-control form-control-color" name="color">
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label for="archivo" class="col-sm-2 col-form-label">Subir Curriculum:</label>
+                        <div class="col-sm-10">
+                            <input type="file" id="archivo" class="form-control" name="archivo">
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label for="asunto" class="col-sm-2 col-form-label">Asunto:</label>
+                        <div class="col-sm-10">
+                            <select id="asunto" class="form-select">
                                 <option>Pregunta</option>
                                 <option>Informe</option>
                                 <option>Otro</option>
                             </select>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
             
-                    <tr>
-                        <td><label for="mensaje">Mensaje:</label></td>
-                        <td><textarea id="mensaje" rows="5" cols="40"></textarea></td>
-                    </tr>
+                    <div class="mb-3 row">
+                        <label for="mensaje" class="col-sm-2 col-form-label">Mensaje:</label>
+                        <div class="col-sm-10">
+                            <textarea id="mensaje" rows="5" class="form-control" placeholder="Escribe tu mensaje aquí..."></textarea>
+                        </div>
+                    </div>
             
-                    <tr>
-                        <td colspan="2" align="center">
-                            <button type="submit">Enviar</button>
-                        </td>
-                    </tr>
-                </table>
-            </section>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+        </section>
+            
             
             <br><br>
 
             <!-- Sección de enlaces y redes sociales -->
-            <footer style="border: 2px solid black; padding: 10px; margin-top: 20px;">
-                <section>
-                    <table width="100%">
-                        <tr>
-                            <td>
-                                <p>Links</p>
-                                <ul>
-                                    <li><a href="#">Contacto</a></li>
-                                    <li><a href="#">Preguntas Frecuentes</a></li>
-                                    <li><a href="#">Juegos</a></li>
-                                </ul>
-                            </td>
-                            <td>
-                                <p>Redes Sociales</p>
-                                <ul>
-                                    <li><a href="#">Instagram</a></li>
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">YouTube</a></li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
-                </section>
-                
-            </footer>
+            <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h4>Inicio</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Contacto>
+              <li><a href="#">Consolas</a></li>
+              <li><a href="#">Accesorios</a></li>
+              <li><a href="#">PlayShop</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>PS PLUS</h4>
+            <ul>
+              <li><a href="#">Juegos</a></li>
+              <li><a href="#">Membresias</a></li>
+              <li><a href="#">Preguntas</a></li>
+              <li><a href="#">Ayuda</a></li>
+              
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Nosotros</h4>
+            <ul>
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Historia</a></li>
+              <li><a href="#">no se</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>CONTACTO</h4>
+            <ul>
+              <li><a href="#">Telefono</a></li>
+              <li><a href="#">Correo</a></li>
+            </ul>
+            <div class="social-icons">
+              <span class="circle-icon"></span>
+              <span class="circle-icon"></span>
+              <span class="circle-icon star"></span>
+            </div>
+          </div>
+          <div class="footer-column logo-area">
+            <h3>PlayStation</h3>
+            <p>¿Listo Para Empezar a Jugar?</p>
+            <div class="buttons">
+              <a href="#" class="login">LOGIN</a>
+              <a href="#" class="create-account">CREAR CUENTA</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Felipe Monardes 2025</p>
+        </div>
+    </footer>
             <br>
 
     <section align="center" style="border:2px solid black;">

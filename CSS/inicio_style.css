@@ -1,7 +1,11 @@
+body {
+    background-color: #3386ff;
+}
 
 /* Navegación */
 nav a {
     text-decoration: none;
+    background-color: #3386ff;
     
     
 }
