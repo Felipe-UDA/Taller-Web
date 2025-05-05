@@ -1,13 +1,7 @@
-body {
-    background-color: #3386ff;
-}
-
 /* Navegación */
 nav a {
     text-decoration: none;
-    background-color: #3386ff;
-    
-    
+    background-color: #3386ff;    
 }
 
 nav a:hover {
@@ -15,27 +9,105 @@ nav a:hover {
 }
 
 /* Cuerpo */
-.banner {
-    display: flex;
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    
+    color: #fff;
+  }
+  
+  .carrusel {
+    position: relative;
     width: 100%;
-    height: 430px;
-}
-
-.banner img {
-    width: 0px;
-    flex-grow: 1;
+    height: 80vh;
+    overflow: hidden;
+  }
+  
+  .slide {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    opacity: .8;
-    transition: .5s ease;
+  }
+  
+  .slide.active {
+    display: block;
+    animation: fade 1s;
+  }
+  
+  @keyframes fade {
+    from { opacity: 0.4 }
+    to { opacity: 1 }
+  }
+  
+  .contenido {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+    max-width: 40%;
+    border-left: 5px solid #3386ff;
+  }
+  
+  .contenido h1 {
+    color: #3386ff;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .contenido p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+  }
+  
+  .flecha {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    z-index: 10;
+  }
+  
+  .flecha.izq { left: 10px; }
+  .flecha.der { right: 10px; }
+  
+  .flecha:hover {
+    background: rgba(0,0,0,0.8);
+  }
+  /* Parte de los perifericos */
+  .miniatura {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 10px;
+  }
+  
+  .miniatura:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    border-color: #007bff;
+  }
+  
+  .titulo-seccion {
+    text-align: center; /* Centra el título */
+    font-size: 36px; /* Tamaño del texto */
+    color: #333; /* Color del texto */
+    margin-bottom: 20px; /* Espacio debajo del título */
+    font-weight: bold; /* Hacer el texto negrita */
 }
-
-.banner img:hover {
-    cursor: crosshair;
-    width: 300px;
-    opacity: 1;
-    filter: contrast(120%);
-}
-
 
 /* Parte del Video */
 .ps5-hero {
@@ -95,44 +167,124 @@ nav a:hover {
   }
   
 
-/* Estilos para la sección de noticias */
-.news-section {
-    padding: 2rem;
-    color: white;
-}
+/* Estilos para la sección de juegos */
 
-.news-grid {
+#juegos-container,
+#mas-juegos-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas */
+    gap: 24px; /* espacio entre tarjetas */
+    padding: 0 40px; /* márgenes laterales */
+    margin-top: 30px;
 }
 
-.news-card {
-    position: relative;
+/* Tarjetas de juego */
+.juego-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    height: 100%; /* que ocupe toda la celda */
 }
 
-.news-card:hover {
-    transform: scale(1.05);
+/* Efecto hover */
+.juego-card:hover {
+    transform: scale(1.03);
 }
 
-.news-card img {
+/* Imagen */
+.card-img-top {
     width: 100%;
-    height: 200px;
+    height: 250px; /* altura fija para uniformidad */
     object-fit: cover;
-    border-radius: 10px;
 }
 
-.news-card .news-text {
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.6);
+/* Contenido */
+.card-body {
+    text-align: center;
+    padding: 12px;
+    font-size: 18px;
+}
+
+/* Botón centrado */
+#verMasBtn {
+    display: block;
+    margin: 40px auto;
+    padding: 12px 24px;
+    background-color: #007bff;
     color: white;
-    padding: 1rem;
-    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 6px;
+    width: 220px;
+}
+
+#verMasBtn:hover {
+    background-color: #0056b3;
+}
+
+/* gotop */
+
+.go-top-container{
+    position:fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    z-index: -1;
+}
+
+.go-top-button{
+    width: 0rem;
+    height: 0rem;
+    background: #2071b2;
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.go-top-button i{
+    position: absolute;
+    font-size: 1.7rem;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #fff;
+    transition: .2s;
+}
+
+.show{
+    z-index:10;
+}
+
+.show .go-top-button{
+    animation: popup .3s ease-in-out;
+    width: 4rem;
+    height: 4rem;
+    z-index: 11;
+}
+
+.show i{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+@keyframes popup{
+    0%{
+        width: 0rem;
+        height: 0rem;
+    }
+    50%{
+        width: 5rem;
+        height: 5rem;
+    }
+    100%{
+        width: 4rem;
+        height: 4rem;
+    }
 }

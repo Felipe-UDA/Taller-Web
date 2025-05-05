@@ -3,8 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #55a1e0;
     color: #333;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Navegación */
@@ -18,62 +18,57 @@ nav a:hover {
     color: red;
 }
 
-/* Estilos para secciones con imagen y texto */
-.bloque {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px auto;
-    width: 90%;
-    gap: 30px; /* Espacio entre texto e imagen */
+/* Estilos para imágenes clickeables */
+.clickable-img {
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* Texto dentro de las secciones */
-.texto {
-    max-width: 50%;
+.clickable-img:hover {
+    transform: scale(1.03);
 }
 
-.texto h2 {
-    margin-top: 0;
-    font-size: 24px;
+.mensaje-img {
+    font-style: italic;
+    color: #555;
+    transition: opacity 0.3s ease;
 }
 
-/* Imagen dentro de las secciones */
-.bloque img {
-    max-width: 300px;
-    height: auto;
-    border-radius: 10px;
-}
-
-/* Dirección de los bloques */
-.texto-imagen {
-    flex-direction: row;
-}
-
-.imagen-texto {
-    flex-direction: row;
+/* Limitar tamaño de imágenes */
+.imagen-limitada {
+    max-width: 400px;
+    margin: 0 auto;
 }
 
 /* Estilos específicos para el cuadro */
 .cuadro {
-    display: flex; 
-    justify-content: center;
-    align-items: center;
     border: 2px solid black;
-    padding: 50px; 
-    width: 80%; 
+    padding: 50px;
+    width: 80%;
     margin: 0 auto;
-    gap: 20px; /* distancia entre las imágenes */
 }
 
-.cuadro img {
-    width: 300px; 
-    height: 300px; 
-    object-fit: contain; /* proporción de las imagenes */
+/* Contenedor visual para aplicar sombras y bordes redondeados */
+.img-wrapper {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.img-wrapper:hover img {
+    transform: scale(1.05);
 }
 
 /* Mapa y texto */
-/* Estilo para el contenedor del mapa y el texto */
 .mapa-contenedor {
     display: flex;
     align-items: flex-start;
@@ -81,21 +76,147 @@ nav a:hover {
     margin-top: 20px;
 }
 
-/* Estilo para el mapa */
 .mapa-contenedor iframe {
-    width: 60%;  
+    width: 60%;
     height: 450px;
     border: 0;
     margin: 10px;
 }
 
-/* estilo para el texto */
 .mapa-contenedor .texto-mapa {
-    width: 35%;  
+    width: 35%;
     padding-left: 20px;
 }
 
 .mapa-contenedor .texto-mapa p {
     font-size: 16px;
     color: #333;
+}
+
+/* ========================= */
+/*          MODO OSCURO      */
+/* ========================= */
+body.dark-mode {
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+body.dark-mode .bloque,
+body.dark-mode .cuadro,
+body.dark-mode .mapa-contenedor .texto-mapa {
+    background-color: #1e1e1e;
+    border-color: #444;
+}
+
+body.dark-mode nav a {
+    color: #f0f0f0;
+}
+
+body.dark-mode nav a:hover {
+    color: #ff6b6b;
+}
+
+body.dark-mode .modal-content {
+    background-color: #1e1e1e;
+    color: #fff;
+}
+
+body.dark-mode .form-label {
+    color: #fff;
+}
+
+body.dark-mode .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+body.dark-mode .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Ajuste para .bg-light en modo oscuro */
+body.dark-mode .bg-light {
+    background-color: #1f1f1f !important;
+    color: #f0f0f0;
+}
+
+/* Textos en modo oscuro */
+body.dark-mode .mensaje-img,
+body.dark-mode .texto-mapa p,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p {
+    color: #e0e0e0;
+}
+
+/* Transiciones suaves */
+header,
+nav,
+section,
+footer,
+.modal-content {
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* gotop */
+
+.go-top-container{
+    position:fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 4rem;
+    height: 4rem;
+    z-index: -1;
+}
+
+.go-top-button{
+    width: 0rem;
+    height: 0rem;
+    background: #2071b2;
+    border-radius: 50%;
+    cursor: pointer;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.go-top-button i{
+    position: absolute;
+    font-size: 1.7rem;
+    top: 48%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: #fff;
+    transition: .2s;
+}
+
+.show{
+    z-index:10;
+}
+
+.show .go-top-button{
+    animation: popup .3s ease-in-out;
+    width: 4rem;
+    height: 4rem;
+    z-index: 11;
+}
+
+.show i{
+    transform: translate(-50%, -50%) scale(1);
+}
+
+@keyframes popup{
+    0%{
+        width: 0rem;
+        height: 0rem;
+    }
+    50%{
+        width: 5rem;
+        height: 5rem;
+    }
+    100%{
+        width: 4rem;
+        height: 4rem;
+    }
 }

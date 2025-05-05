@@ -15,7 +15,7 @@
     </style>
 
 </head>
-<body bgcolor="3386ff">
+<body>
     <font color="black">
         <!-- Encabezado y navegación -->
         <header class="bg-light py-2">
@@ -23,6 +23,7 @@
               <img src="/Imagenes/logoweno.png" alt="Logo" width="80">
           
               <div>
+                <!-- me-2: margen a la derecha para separación -->
                 <a href="inicio.html" class="btn btn-primary me-2">Inicio</a>
                 <a href="contacto.html" class="btn btn-primary me-2">Contacto</a>
                 <a href="login.html" class="btn btn-primary">Login</a>
@@ -40,10 +41,11 @@
 
             <!-- Formulario de contacto -->
             <section>
+                <!-- container: centra y limita ancho | mt-5: margen superior -->
                 <form class="container mt-5">
-                    <div class="mb-3 row">
+                    <div class="mb-3 row"> <!-- mb-3: margen inferior | row: fila de Bootstrap -->
                         <label for="nombre" class="col-sm-2 col-form-label">Nombres:</label>
-                        <div class="col-sm-10">
+                        <div class="col-sm-10"><!-- col-sm-10: 10 de 12 columnas en pantallas pequeñas para inputs -->
                             <input type="text" id="nombre" class="form-control mb-2" placeholder="Nombre">
                             <input type="text" class="form-control" placeholder="Apellido">
                         </div>

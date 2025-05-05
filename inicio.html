@@ -8,9 +8,12 @@
     <link rel="stylesheet" href="/CSS/inicio_style.css">
     <link rel="stylesheet" href="/CSS/botones.css">
     <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
-<body bgcolor="3386ff">
-    <font color="black">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<body>
+    
         <!-- Encabezado y navegación -->
         <header class="bg-light py-2">
             <nav class="container d-flex justify-content-between align-items-center">
@@ -19,20 +22,90 @@
               <div>
                 <a href="inicio.html" class="btn btn-primary me-2">Inicio</a>
                 <a href="contacto.html" class="btn btn-primary me-2">Contacto</a>
-                <a href="login.html" class="btn btn-primary">Login</a>
+                <!-- Botón que abre el modal -->
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Ingresar</button>
               </div>
             </nav>
-        </header>
+          </header>
+          
+          <!-- Modal de Login -->
+          <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="loginForm">
+                    <div class="mb-3">
+                      <label for="usuario" class="form-label text-dark">Usuario</label>
+                      <input type="text" class="form-control" id="usuario" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="contrasena" class="form-label text-dark">Contraseña</label>
+                      <input type="password" class="form-control" id="contrasena" required>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                      <a href="registro.html" class="btn btn-secondary">Registrarse</a>
+                      <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
         
         <!-- Contenido principal -->
         <main>
-            <section class="banner container-fluid p-0 mt-5">
-                <img src="/Imagenes/wallpaper1.jpg" alt="Wallpaper 1" class="img-fluid">
-                <img src="/Imagenes/wallpaper2.jpg" alt="Wallpaper 2" class="img-fluid">
-                <img src="/Imagenes/wallpaper3.jpg" alt="Wallpaper 3" class="img-fluid">
-                <img src="/Imagenes/wallpaper4.jpg" alt="Wallpaper 4" class="img-fluid">
-            </section>
+            <!-- CARRUSEL -->
+            <div class="carrusel">
+                <div class="slide active">
+                  <img src="/Imagenes/wallpaper_gta6.jpg" alt="Imagen 1">
+                  <div class="contenido">
+                    <h1>Grand Theft Auto VI</h1>
+                    <p>Proximamente el nuevo juego de Rocktars en PS5</p>
+                  </div>
+                </div>
+                <div class="slide">
+                  <img src="/Imagenes/wallpaper bloodborne.jpg" alt="Imagen 2">
+                  <div class="contenido">
+                    <h1>Bloodborne</h1>
+                    <p>La joya de FromSoftware solamente en PS5</p>
+                  </div>
+                </div>
+                <div class="slide">
+                  <img src="/Imagenes/wallpaperflare.com_wallpaper.jpg" alt="Imagen 3">
+                  <div class="contenido">
+                    <h1>God of War</h1>
+                    <p>Revive la epica historia de Kratos y Atreus</p>
+                  </div>
+                </div>
               
+                <button class="flecha izq" onclick="cambiarSlide(-1)">&#10094;</button>
+                <button class="flecha der" onclick="cambiarSlide(1)">&#10095;</button>
+            </div>
+              
+            <script src="carrusel.js"></script>
+
+            <!-- SECCION PARA LOS PERIFERICOS -->
+            <h1 class="titulo-seccion"> ¡Descubre estos nuevos Perifericos!</h1>
+            <div class="accesorios-carousel text-center my-4">
+
+                <img id="imagen-principal" src="/Imagenes/mando_ps5.webp" class="img-fluid mb-4" width="500" />
+
+                <div>
+                    <img src="/Imagenes/mando_ps5.webp" class="img-thumbnail mx-2 miniatura" width="150" />
+                    <img src="/Imagenes/camara_ps5.webp" class="img-thumbnail mx-2 miniatura" width="150" />
+                    <img src="/Imagenes/audifonos_ps5.webp" class="img-thumbnail mx-2 miniatura" width="150" />
+                    <img src="/Imagenes/control_ps5.webp" class="img-thumbnail mx-2 miniatura" width="150" />
+                    <img src="/Imagenes/auriculares_ps5.webp" class="img-thumbnail mx-2 miniatura" width="150" />
+                    <img src="/Imagenes/access_ps5.webp" class="img-thumbnail mx-2 miniatura" width="150" />
+                </div>
+            </div>
+            
+            <!-- SECCION PARA EL VIDEO -->
             <section class="ps5-hero">
                 <video autoplay muted loop class="video-bg w-100">
                   <source src="/Imagenes/revelacionPS5.mp4" type="video/mp4">
@@ -50,52 +123,123 @@
                   </p>
                 </div>
             </section>
-              
-            
             
             <br><br>
-            
 
-            <div class="news-section">
-                <div class="news-grid">
-                    <div class="news-card">
-                        <img src="/Imagenes/God-of-War-Ragnarok.webp" alt="Noticia 1">
-                        <div class="news-text">
-                            <h5>God of War Ragnarok</h5>
+            <div id="juegos-container" class="row">
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/crash_card.avif" class="card-img-top " alt="Juego 1">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Crash Bandicoot</h5>
                         </div>
                     </div>
-                    <div class="news-card">
-                        <img src="/Imagenes/the_last_of_us.jpg" alt="Noticia 2">
-                        <div class="news-text">
-                            <h5>The Last of Us</h5>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/spiderman.jpg" class="card-img-top" alt="Juego 2">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Spiderman</h5>
                         </div>
                     </div>
-                    <div class="news-card">
-                        <img src="/Imagenes/Gran-turismo-7.webp" alt="Noticia 3">
-                        <div class="news-text">
-                            <h5>Gran Turismo 7</h5>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/astrobot_.avif" class="card-img-top" alt="Juego 3">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Astrobot</h5>
                         </div>
                     </div>
-                    <div class="news-card">
-                        <img src="/Imagenes/ratchet-clank.jpg" alt="Noticia 4">
-                        <div class="news-text">
-                            <h5>Ratchet and Clank</h5>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/thelastofus.jpg" class="card-img-top" alt="Juego 4">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">The Last of Us</h5>
                         </div>
                     </div>
-                    <div class="news-card">
-                        <img src="/Imagenes/bloodborne.jpg" alt="Noticia 5">
-                        <div class="news-text">
-                            <h5>Bloodborne</h5>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/ratchet_clank.avif" class="card-img-top" alt="Juego 5">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Ratchet and Clank</h5>
                         </div>
                     </div>
-                    <div class="news-card">
-                        <img src="/Imagenes/astrobot.jpg" alt="Noticia 6">
-                        <div class="news-text">
-                            <h5>AstroBot</h5>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/elden_ring.avif" class="card-img-top" alt="Juego 6">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Elden Ring</h5>
                         </div>
                     </div>
                 </div>
             </div>
+        
+            <!-- Contenedor de los siguientes 6 juegos, inicialmente oculto -->
+            <div id="mas-juegos-container" class="row">
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/gta5.jpg" class="card-img-top" alt="Juego 7">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Grand Theft Auto V</h5>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/granT7.jpg" class="card-img-top" alt="Juego 8">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Gran Turismo 7</h5>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/ghost-of-tsushima.webp" class="card-img-top" alt="Juego 9">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Ghost of Tsushima</h5>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/red_dead.jpg" class="card-img-top" alt="Juego 10">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Red Dead Redemption</h5>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/Hogwarts_Legacy.jpg" class="card-img-top" alt="Juego 11">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Hogwarts Legacy</h5>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="juego-card">
+                        <img src="/Imagenes/residen_evil2.webp" class="card-img-top" alt="Juego 12">
+                        <div class="card-body">
+                            <h5 class="card-title text-dark">Resident Evil 2</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Botón "Ver más / Ver menos" -->
+            <div class="text-center mt-4">
+                <button id="verMasBtn" class="btn btn-primary">Ver más</button>
+            </div>
+            
+        <div class="go-top-container">
+            <div class="go-top-button">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+        </div>
+        
         </main>
     
     <!-- Footer -->
@@ -155,8 +299,6 @@
         </div>
       </footer>
 
-    <br>
-
-    </font>
+    <script src="/JS/js_inicio.js"></script>
 </body>
 </html>

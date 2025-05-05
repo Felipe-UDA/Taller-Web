@@ -3,55 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nosotros</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/nosotros_style.css">
+    <link rel="stylesheet" href="/CSS/botones.css">
+    <link rel="stylesheet" href="/CSS/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Encabezado y navegación -->
-    <header>
-        <nav>
-            <table width="90%" align="center">
-                <tr>
-                    <td><img src="/Imagenes/logoweno.png" alt="Logo" width="80"></td>
-                    <td align="right">
-                        <a href="inicio.html">Inicio</a> |
-                        <a href="contacto.html"><b>Contacto</b></a>
-                        <a href="login.html"><b>Login</b></a>
-                    </td>
-                </tr>
-            </table>
+    <header class="bg-light py-2">
+        <nav class="container d-flex justify-content-between align-items-center">
+          <img src="/Imagenes/logoweno.png" alt="Logo" width="80">
+      
+          <div>
+            <button id="toggleDarkMode" class="btn btn-secondary">🌙 Modo Oscuro</button>
+            <a href="inicio.html" class="btn btn-primary me-2">Inicio</a>
+            <a href="contacto.html" class="btn btn-primary me-2">Contacto</a>
+            <!-- Botón que abre el modal -->
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Ingresar</button>
+          </div>
         </nav>
     </header>
+      
+      <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="usuario" class="form-label text-dark">Usuario</label>
+                  <input type="text" class="form-control" id="usuario" required>
+                </div>
+                <div class="mb-3">
+                  <label for="contrasena" class="form-label text-dark">Contraseña</label>
+                  <input type="password" class="form-control" id="contrasena" required>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <a href="registro.html" class="btn btn-secondary">Registrarse</a>
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+    </div>
 
     <!-- Contenido principal -->
     <main>
         <section>
-            <img src="/Imagenes/banner.webp" alt="Imagen principal" width="100%">
+            <img src="/Imagenes/banner.webp" class="img-fluid" alt="Imagen principal" width="100%">
         </section>
 
-        <section class="bloque texto-imagen">
-            <div class="texto">
-              <h2>PS5 PRO</h2>
-              <p>La <font color="red">PS5 Pro</font> es una versión mejorada de la PlayStation 5, destinada a ofrecer un rendimiento superior. Con un mayor poder de procesamiento, la PS5 Pro permite jugar en resoluciones aún más altas, como 8K, y mejorar la tasa de cuadros por segundo (FPS) en juegos compatibles. Esta consola es ideal para los jugadores que buscan la mejor calidad gráfica y un rendimiento optimizado, especialmente en juegos de última generación que aprovechan al máximo el hardware avanzado.</p>
+        <!-- Sección de presentación personal -->
+        <section class="py-5 bg-light">
+            <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 mb-4 mb-md-0">
+                <h2 class="mb-4">¿Por qué elegí hacer una página sobre PlayStation?</h2>
+                <p>
+                    Siempre he sido un apasionado de los videojuegos, y desde pequeño, PlayStation ha sido parte fundamental de mi entretenimiento. 
+                    Su evolución, sus juegos icónicos como God of War y The Last of Us, y su comunidad global, la convierten en una marca que me inspira. 
+                    Por eso, decidí crear esta página: para compartir mi admiración y explorar el impacto de esta consola en la industria del gaming.
+                </p>
+                <p>
+                    Además, este proyecto me permitió combinar mi interés por el diseño web con un tema que disfruto, haciendo que el proceso de desarrollo 
+                    fuera más motivador y creativo.
+                </p>
+                </div>
+                <div class="imagen-interactiva text-center mb-5 imagen-limitada">
+                    <img src="/Imagenes/kratos.webp" class="img-fluid rounded shadow clickable-img" alt="PlayStation Juegos">
+                    <p class="mensaje-img mt-3 d-none">"God of War, una franquicia de videojuegos de Santa Monica."</p>
+                </div>
             </div>
-            <img src="/Imagenes/ps5 pro.webp" class="ps5_pro" alt="Imagen 1">
-        </section>
-
-        <section class="bloque imagen-texto">
-            <img src="/Imagenes/ps5 slim.webp" class="ps5_slim" alt="Imagen 2">
-            <div class="texto">
-              <h2>PS5 SLIM</h2>
-              <p>La <font color="red">PS5 Slim</font> es una versión más compacta y ligera de la PlayStation 5 original. Con un diseño más delgado y un enfoque en la eficiencia energética, mantiene las mismas características de rendimiento que la versión estándar, como gráficos en 4K, tiempos de carga rápidos y compatibilidad con juegos de PS5. Su tamaño reducido la hace ideal para aquellos que buscan una consola potente con un diseño más pequeño y fácil de ubicar.</p>
             </div>
         </section>
         
-        <section class="cuadro">
-            <img src="/Imagenes/gow_ragnarok_ps5.jpg" alt="Icono gato">
-            <img src="/Imagenes/gran turismo.jpg" alt="Icono pájaro">
-            <img src="/Imagenes/demon soul.avif" alt="Icono auto eléctrico">
-            <img src="/Imagenes/crash.webp" alt="Icono usuario">
+        <!-- Sección adicional con imagen complementaria -->
+        <section class="py-5">
+            <div class="container">
+            <div class="row align-items-center flex-md-row-reverse">
+                <div class="col-md-6 mb-4 mb-md-0">
+                <h3 class="mb-3">Una marca que evoluciona con los jugadores</h3>
+                <p>
+                    Lo que más me fascina de PlayStation es cómo ha crecido con su audiencia, ofreciendo experiencias cada vez más inmersivas. 
+                    Desde los gráficos hasta la narrativa, cada nueva generación supera expectativas y redefine el estándar del gaming.
+                </p>
+                </div>
+                <div class="imagen-interactiva text-center mb-5 imagen-limitada">
+                    <img src="/Imagenes/play2.webp" class="img-fluid rounded shadow clickable-img" alt="Evolución PlayStation">
+                    <p class="mensaje-img mt-3 d-none">"PlayStation 2, lanzada el 4 de Marzo del 2000."</p>
+                </div>
+            </div>
+            </div>
         </section>
-
+  
         
         <section class="mapa-contenedor">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3543.604163136831!2d-70.3552566888286!3d-27.356841111808688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x969803ee988f304f%3A0x5d6a6c8301905dfb!2sUniversidad%20de%20Atacama!5e0!3m2!1ses!2scl!4v1743997433266!5m2!1ses!2scl" width="600" height="450"></iframe>
@@ -61,39 +112,70 @@
             </div>
         </section>
         
+        <div class="go-top-container">
+            <div class="go-top-button">
+                <i class="fas fa-chevron-up"></i>
+            </div>
+        </div>
         
     </main>
 
     <!-- Footer -->
-    <footer style="border: 2px solid black; padding: 10px; margin-top: 20px;">
-        <section>
-            <table width="100%">
-                <tr>
-                    <td>
-                        <p>Links</p>
-                        <ul>
-                            <li><a href="#">Contacto</a></li>
-                            <li><a href="#">Preguntas Frecuentes</a></li>
-                            <li><a href="#">Juegos</a></li>
-                        </ul>
-                    </td>
-                    <td>
-                        <p>Redes Sociales</p>
-                        <ul>
-                            <li><a href="#">Instagram</a></li>
-                            <li><a href="#">Facebook</a></li>
-                            <li><a href="#">YouTube</a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </section>
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-column">
+            <h4>Inicio</h4>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Contacto>
+              <li><a href="#">Consolas</a></li>
+              <li><a href="#">Accesorios</a></li>
+              <li><a href="#">PlayShop</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>PS PLUS</h4>
+            <ul>
+              <li><a href="#">Juegos</a></li>
+              <li><a href="#">Membresias</a></li>
+              <li><a href="#">Preguntas</a></li>
+              <li><a href="#">Ayuda</a></li>
+              
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>Nosotros</h4>
+            <ul>
+              <li><a href="#">Nosotros</a></li>
+              <li><a href="#">Historia</a></li>
+              <li><a href="#">no se</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4>CONTACTO</h4>
+            <ul>
+              <li><a href="#">Telefono</a></li>
+              <li><a href="#">Correo</a></li>
+            </ul>
+            <div class="social-icons">
+              <span class="circle-icon"></span>
+              <span class="circle-icon"></span>
+              <span class="circle-icon star"></span>
+            </div>
+          </div>
+          <div class="footer-column logo-area">
+            <h3>PlayStation</h3>
+            <p>¿Listo Para Empezar a Jugar?</p>
+            <div class="buttons">
+              <a href="#" class="login">LOGIN</a>
+              <a href="#" class="create-account">CREAR CUENTA</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Felipe Monardes 2025</p>
+        </div>
     </footer>
-
-    <br>
-
-    <section align="center" style="border:2px solid black;">
-        <p>© Felipe Monardes 2025</p>
-    </section>
+<script src="/JS/js_nosotros.js"></script>
 </body>
 </html>
