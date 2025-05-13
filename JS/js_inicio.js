@@ -4,8 +4,8 @@ const slides = document.querySelectorAll('.slide');
 
 // Mostrar el slide en el índice indicado
 function mostrarSlide(index) {
-  slides.forEach(slide => slide.classList.remove('active')); // Eliminar clase 'active' de todos los slides
-  slides[index].classList.add('active'); // Añadir clase 'active' al slide actual
+  slides.forEach(slide => slide.classList.remove('active')); // Eliminar clase active de todos los slides
+  slides[index].classList.add('active'); // Añadir clase active al slide actual
 }
 
 // Cambiar al siguiente o anterior slide
@@ -67,3 +67,28 @@ document.querySelector('.go-top-container')
         behavior: 'smooth'
     });
 });
+
+//parte del modal
+document.addEventListener("DOMContentLoaded", function () {
+    const loginForm = document.getElementById("loginForm");
+    const welcomeMessage = document.getElementById("welcomeMessage");
+
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const username = document.getElementById("usuario").value.trim();
+      const password = document.getElementById("contrasena").value;
+
+      if (username && password) {
+        // Mostrar mensaje en el navbar
+        welcomeMessage.textContent = `Bienvenido, ${username}`;
+
+        // Cerrar el modal (usando Bootstrap 5)
+        const loginModal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
+        loginModal.hide();
+      } else {
+        alert("Por favor, completa todos los campos.");
+      }
+    });
+});
+
