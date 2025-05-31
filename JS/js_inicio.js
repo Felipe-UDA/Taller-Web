@@ -50,6 +50,27 @@ verMasBtn.onclick = function () {
     }
 };
 
+// Detectar cuando el elemento entra en el área visible
+function activarAnimaciones() {
+    const elementos = document.querySelectorAll('.scroll-fade');
+    
+    elementos.forEach((elemento) => {
+        const posicionElemento = elemento.getBoundingClientRect();
+        // Si el elemento está visible en la ventana del navegador
+        if (posicionElemento.top < window.innerHeight && posicionElemento.bottom >= 0) {
+            elemento.classList.add('visible');
+        } else {
+            elemento.classList.remove('visible');
+        }
+    });
+}
+
+// Llamar a la función cuando se haga scroll
+window.addEventListener('scroll', activarAnimaciones);
+
+// También llamar a la función al cargar la página para verificar los elementos visibles
+document.addEventListener('DOMContentLoaded', activarAnimaciones);
+
 window.onscroll = function(){
     if(document.documentElement.scrollTop > 50){
         document.querySelector('.go-top-container')
@@ -69,26 +90,111 @@ document.querySelector('.go-top-container')
 });
 
 //parte del modal
-document.addEventListener("DOMContentLoaded", function () {
-    const loginForm = document.getElementById("loginForm");
-    const welcomeMessage = document.getElementById("welcomeMessage");
-
-    loginForm.addEventListener("submit", function (e) {
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('loginForm');
+    const mensajeBienvenida = document.getElementById('MensajeBienvenida');
+  
+    loginForm.addEventListener('submit', function(e) {
       e.preventDefault();
+  
+      const usuarioIngresado = document.getElementById('usuario').value.trim();
+      const contrasenaIngresada = document.getElementById('contrasena').value.trim();
+  
+      const usuarioGuardado = localStorage.getItem('usuario');
+      const passwordGuardado = localStorage.getItem('password');
 
-      const username = document.getElementById("usuario").value.trim();
-      const password = document.getElementById("contrasena").value;
-
-      if (username && password) {
-        // Mostrar mensaje en el navbar
-        welcomeMessage.textContent = `Bienvenido, ${username}`;
-
-        // Cerrar el modal (usando Bootstrap 5)
-        const loginModal = bootstrap.Modal.getInstance(document.getElementById("loginModal"));
-        loginModal.hide();
+      // Agregar logs de depuración
+      console.log("Usuario ingresado: ", usuarioIngresado);
+      console.log("Contraseña ingresada: ", contrasenaIngresada);
+      console.log("Usuario guardado: ", usuarioGuardado);
+      console.log("Contraseña guardada: ", passwordGuardado);
+  
+      if (usuarioIngresado === usuarioGuardado && contrasenaIngresada === passwordGuardado) {
+        mensajeBienvenida.textContent = `Bienvenido, ${usuarioGuardado}!`;
+  
+        const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+        modal.hide();
       } else {
-        alert("Por favor, completa todos los campos.");
+        alert("Usuario o contraseña incorrectos.");
       }
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('toggleDarkMode');
+
+    // Verifica si el usuario ya tiene una preferencia guardada
+    if (localStorage.getItem('modoOscuro') === 'true') {
+        document.body.classList.add('dark-mode');
+        toggleBtn.textContent = '☀️ Modo Claro';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const modoOscuroActivo = document.body.classList.contains('dark-mode');
+        localStorage.setItem('modoOscuro', modoOscuroActivo);
+
+        toggleBtn.textContent = modoOscuroActivo ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+    });
+});
+// API
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("juegos-container");
+  container.innerHTML = ""; // Limpia las tarjetas estáticas
+
+  fetch("https://www.cheapshark.com/api/1.0/deals?storeID=1&pageSize=6")
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(juego => {
+        const juegoHTML = `
+          <div>
+            <div class="juego-card scroll-fade">
+              <img src="${juego.thumb}" class="card-img-top" alt="${juego.title}">
+              <div class="card-body">
+                <h5 class="card-title text-dark">${juego.title}</h5>
+                <p class="card-text text-success">Precio: $${juego.salePrice}</p>
+              </div>
+            </div>
+          </div>
+        `;
+        container.innerHTML += juegoHTML;
+      });
+    })
+    .catch(error => {
+      console.error("Error al obtener los juegos:", error);
+      container.innerHTML = "<p>Error al cargar juegos desde la API.</p>";
+    });
+});
+
+// API II
+document.addEventListener("DOMContentLoaded", function () {
+    const contenedorNoticias = document.getElementById("noticias-container");
+
+    fetch("https://newsapi.org/v2/everything?q=PlayStation&language=es&sortBy=publishedAt&pageSize=6&apiKey=4fdf61499cc74efb81d9a21c3a9cb977")
+        .then(response => response.json())
+        .then(data => {
+            if (data.articles && data.articles.length > 0) {
+                data.articles.forEach(noticia => {
+                    const card = document.createElement("div");
+                    card.classList.add("col-md-4", "mb-4");
+                    card.innerHTML = `
+                        <div class="card h-100">
+                            <img src="${noticia.urlToImage || 'https://via.placeholder.com/300'}" class="card-img-top" alt="Noticia">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">${noticia.title}</h5>
+                                <p class="card-text">${noticia.description || "Sin descripción disponible"}</p>
+                                <a href="${noticia.url}" class="mt-auto btn btn-primary" target="_blank">Leer más</a>
+                            </div>
+                        </div>
+                    `;
+                    contenedorNoticias.appendChild(card);
+                });
+            } else {
+                contenedorNoticias.innerHTML = "<p>No se encontraron noticias recientes.</p>";
+            }
+        })
+        .catch(error => {
+            console.error("Error al obtener noticias:", error);
+            contenedorNoticias.innerHTML = "<p>Ocurrió un error al cargar las noticias.</p>";
+        });
+});

@@ -208,6 +208,19 @@ body {
     font-size: 18px;
 }
 
+/* Elementos ocultos al principio */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(20px); /* Desplazamiento hacia abajo */
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* Elementos visibles cuando entran en el área visible */
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Botón centrado */
 #verMasBtn {
     display: block;
@@ -330,4 +343,77 @@ body {
     border: 1px solid rgba(0,0,0,.2);
     border-radius: 0.5rem;
     outline: 0;
+}
+
+/* ========================= */
+/*          MODO OSCURO      */
+/* ========================= */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode .bloque,
+body.dark-mode .cuadro,
+body.dark-mode .mapa-contenedor .texto-mapa {
+  background-color: #1e1e1e;
+  border-color: #444;
+}
+
+body.dark-mode nav a {
+  color: #f0f0f0;
+}
+
+body.dark-mode nav a:hover {
+  color: #ff6b6b;
+}
+
+body.dark-mode .modal-content {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+body.dark-mode .form-label {
+  color: #fff;
+}
+
+body.dark-mode .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+body.dark-mode .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+body.dark-mode .titulo-seccion {
+  color: #ffffff; /* Blanco para el modo oscuro */
+}
+
+body .titulo-seccion {
+  color: #000000; /* Negro para el modo claro */
+}
+
+/* Ajuste para .bg-light en modo oscuro */
+body.dark-mode .bg-light {
+  background-color: #1f1f1f !important;
+  color: #f0f0f0;
+}
+
+/* Textos en modo oscuro */
+body.dark-mode .mensaje-img,
+body.dark-mode .texto-mapa p,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode p {
+  color: #e0e0e0;
+}
+
+/* Transiciones suaves */
+header,
+nav,
+section,
+footer,
+.modal-content {
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
