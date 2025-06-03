@@ -139,8 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 // API
 document.addEventListener("DOMContentLoaded", () => {
-  const container = document.getElementById("juegos-container");
-  container.innerHTML = ""; // Limpia las tarjetas estáticas
+  const container = document.getElementById("api-juegos");
 
   fetch("https://www.cheapshark.com/api/1.0/deals?storeID=1&pageSize=6")
     .then(res => res.json())
@@ -165,6 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
       container.innerHTML = "<p>Error al cargar juegos desde la API.</p>";
     });
 });
+
+
 
 // API II
 document.addEventListener("DOMContentLoaded", function () {
@@ -198,3 +199,81 @@ document.addEventListener("DOMContentLoaded", function () {
             contenedorNoticias.innerHTML = "<p>Ocurrió un error al cargar las noticias.</p>";
         });
 });
+
+let correctAnswer = "";
+let selectedButton = null;
+
+// Cargar pregunta nueva
+async function loadTriviaQuestion() {
+  const res = await fetch("https://opentdb.com/api.php?amount=1&type=multiple");
+  const data = await res.json();
+  const question = data.results[0];
+
+  correctAnswer = question.correct_answer;
+  selectedButton = null;
+
+  document.getElementById("question").innerText = decodeHtml(question.question);
+
+  const allAnswers = [...question.incorrect_answers, question.correct_answer];
+  shuffleArray(allAnswers); //muestra las respuestas aleatorias
+
+  //botones de respuesta
+  const answersDiv = document.getElementById("answers");
+  answersDiv.innerHTML = "";
+
+  allAnswers.forEach(answer => {
+    const btn = document.createElement("button");
+    btn.innerText = decodeHtml(answer);
+    btn.className = "answer-btn";
+    btn.onclick = () => {
+      document.querySelectorAll(".answer-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      selectedButton = btn;
+    };
+    answersDiv.appendChild(btn);
+  });
+}
+
+// Verificar respuesta
+document.getElementById("check-btn").addEventListener("click", () => {
+  if (!selectedButton) {
+    alert("Por favor selecciona una respuesta.");
+    return;
+  }
+
+  const selectedText = selectedButton.innerText;
+  const correctText = decodeHtml(correctAnswer);
+
+  document.querySelectorAll(".answer-btn").forEach(btn => {
+    btn.disabled = true;
+
+    if (btn.innerText === correctText) {
+      btn.style.backgroundColor = "green";
+    } else if (btn === selectedButton) {
+      btn.style.backgroundColor = "red";
+    }
+  });
+});
+
+// Cargar siguiente pregunta
+document.getElementById("next-btn").addEventListener("click", () => {
+  document.getElementById("check-btn").disabled = false;
+  loadTriviaQuestion();
+});
+
+// Utilidades
+function decodeHtml(html) {
+  const txt = document.createElement("textarea");
+  txt.innerHTML = html;
+  return txt.value;
+}
+
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
+
+// Iniciar
+loadTriviaQuestion();

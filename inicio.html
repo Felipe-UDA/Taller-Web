@@ -111,6 +111,20 @@
               <h2 class="text-center mb-4"> Últimas Noticias sobre PlayStation</h2>
               <div id="noticias-container" class="row"></div>
             </div>
+
+
+            <section id="trivia-section">
+              <h2 style="color: black;">Trivia Game 🎮</h2>
+              <div id="question-container">
+                <p id="question">Loading question...</p>
+                <div id="answers"></div>
+              </div>
+              <button id="check-btn">Verificar respuesta</button>
+              <button id="next-btn">Siguiente pregunta</button>
+            </section>
+
+            <br>
+
             
             <!-- SECCION PARA EL VIDEO -->
             <section class="ps5-hero">
@@ -133,10 +147,12 @@
             
             <br><br>
 
+            <!-- Contenedor principal de juegos -->
             <div id="juegos-container" class="row">
+                <!-- Tarjetas estáticas (originales) -->
                 <div>
                     <div class="juego-card scroll-fade">
-                        <img src="/Imagenes/crash_card.avif" class="card-img-top " alt="Juego 1">
+                        <img src="/Imagenes/crash_card.avif" class="card-img-top " alt="Crash Bandicoot">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Crash Bandicoot</h5>
                         </div>
@@ -144,7 +160,7 @@
                 </div>
                 <div>
                     <div class="juego-card scroll-fade">
-                        <img src="/Imagenes/spiderman.jpg" class="card-img-top" alt="Juego 2">
+                        <img src="/Imagenes/spiderman.jpg" class="card-img-top" alt="Spiderman">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Spiderman</h5>
                         </div>
@@ -152,7 +168,7 @@
                 </div>
                 <div>
                     <div class="juego-card scroll-fade">
-                        <img src="/Imagenes/astrobot_.avif" class="card-img-top" alt="Juego 3">
+                        <img src="/Imagenes/astrobot_.avif" class="card-img-top" alt="Astrobot">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Astrobot</h5>
                         </div>
@@ -160,7 +176,7 @@
                 </div>
                 <div>
                     <div class="juego-card scroll-fade">
-                        <img src="/Imagenes/thelastofus.jpg" class="card-img-top" alt="Juego 4">
+                        <img src="/Imagenes/thelastofus.jpg" class="card-img-top" alt="The Last of Us">
                         <div class="card-body">
                             <h5 class="card-title text-dark">The Last of Us</h5>
                         </div>
@@ -168,7 +184,7 @@
                 </div>
                 <div>
                     <div class="juego-card scroll-fade">
-                        <img src="/Imagenes/ratchet_clank.avif" class="card-img-top" alt="Juego 5">
+                        <img src="/Imagenes/ratchet_clank.avif" class="card-img-top" alt="Ratchet and Clank">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Ratchet and Clank</h5>
                         </div>
@@ -176,19 +192,25 @@
                 </div>
                 <div>
                     <div class="juego-card scroll-fade">
-                        <img src="/Imagenes/elden_ring.avif" class="card-img-top" alt="Juego 6">
+                        <img src="/Imagenes/elden_ring.avif" class="card-img-top" alt="Elden Ring">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Elden Ring</h5>
                         </div>
                     </div>
                 </div>
-            </div>            
-        
+
+                <!-- NUEVO: Contenedor para juegos desde la API -->
+                <div class="contenedor-juegos container mt-5">
+                  <h2 class="mb-4">Ofertas actuales</h2>
+                  <div id="api-juegos" class="row"></div>
+                </div>
+            </div>
+
             <!-- Contenedor de los siguientes 6 juegos, inicialmente oculto -->
             <div id="mas-juegos-container" class="row">
                 <div>
                     <div class="juego-card">
-                        <img src="/Imagenes/gta5.jpg" class="card-img-top" alt="Juego 7">
+                        <img src="/Imagenes/gta5.jpg" class="card-img-top" alt="Grand Theft Auto V">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Grand Theft Auto V</h5>
                         </div>
@@ -196,7 +218,7 @@
                 </div>
                 <div>
                     <div class="juego-card">
-                        <img src="/Imagenes/granT7.jpg" class="card-img-top" alt="Juego 8">
+                        <img src="/Imagenes/granT7.jpg" class="card-img-top" alt="Gran Turismo 7">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Gran Turismo 7</h5>
                         </div>
@@ -204,7 +226,7 @@
                 </div>
                 <div>
                     <div class="juego-card">
-                        <img src="/Imagenes/ghost-of-tsushima.webp" class="card-img-top" alt="Juego 9">
+                        <img src="/Imagenes/ghost-of-tsushima.webp" class="card-img-top" alt="Ghost of Tsushima">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Ghost of Tsushima</h5>
                         </div>
@@ -212,7 +234,7 @@
                 </div>
                 <div>
                     <div class="juego-card">
-                        <img src="/Imagenes/red_dead.jpg" class="card-img-top" alt="Juego 10">
+                        <img src="/Imagenes/red_dead.jpg" class="card-img-top" alt="Red Dead Redemption">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Red Dead Redemption</h5>
                         </div>
@@ -220,7 +242,7 @@
                 </div>
                 <div>
                     <div class="juego-card">
-                        <img src="/Imagenes/Hogwarts_Legacy.jpg" class="card-img-top" alt="Juego 11">
+                        <img src="/Imagenes/Hogwarts_Legacy.jpg" class="card-img-top" alt="Hogwarts Legacy">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Hogwarts Legacy</h5>
                         </div>
@@ -228,24 +250,25 @@
                 </div>
                 <div>
                     <div class="juego-card">
-                        <img src="/Imagenes/residen_evil2.webp" class="card-img-top" alt="Juego 12">
+                        <img src="/Imagenes/residen_evil2.webp" class="card-img-top" alt="Resident Evil 2">
                         <div class="card-body">
                             <h5 class="card-title text-dark">Resident Evil 2</h5>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
             <!-- Botón "Ver más / Ver menos" -->
             <div class="text-center mt-4">
                 <button id="verMasBtn" class="btn btn-primary">Ver más</button>
             </div>
+
             
-        <div class="go-top-container">
-            <div class="go-top-button">
-                <i class="fas fa-chevron-up"></i>
-            </div>
-        </div>
+          <div class="go-top-container">
+              <div class="go-top-button">
+                  <i class="fas fa-chevron-up"></i>
+              </div>
+          </div>
         
         </main>
     

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Trivia de Videojuegos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+      padding: 20px;
+    }
+    .card {
+      background-color: #1f1f1f;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+    }
+    button {
+      background-color: #007bff;
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      margin-top: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .option {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Trivia de Videojuegos</h2>
+    <p id="question">Cargando pregunta...</p>
+    <div id="answers"></div>
+    <p id="result"></p>
+    <button onclick="getQuestion()">Otra pregunta</button>
+  </div>
+
+  <script>
+    let correctAnswer = "";
+
+    async function getQuestion() {
+      document.getElementById("question").textContent = "Cargando pregunta...";
+      document.getElementById("answers").innerHTML = "";
+      document.getElementById("result").textContent = "";
+
+      const res = await fetch("https://opentdb.com/api.php?amount=1&category=15&type=multiple");
+      const data = await res.json();
+      const question = data.results[0];
+      correctAnswer = question.correct_answer;
+
+      // Mostrar pregunta (decodificando HTML)
+      document.getElementById("question").innerHTML = decodeHTML(question.question);
+
+      // Combinar respuestas
+      const options = [...question.incorrect_answers, correctAnswer];
+      shuffleArray(options);
+
+      // Mostrar opciones
+      options.forEach(opt => {
+        const div = document.createElement("div");
+        div.className = "option";
+        div.innerHTML = `
+          <label>
+            <input type="radio" name="answer" value="${opt}"> ${decodeHTML(opt)}
+          </label>
+        `;
+        document.getElementById("answers").appendChild(div);
+      });
+
+      // Agregar botón para verificar
+      const checkBtn = document.createElement("button");
+      checkBtn.textContent = "Verificar respuesta";
+      checkBtn.onclick = checkAnswer;
+      document.getElementById("answers").appendChild(checkBtn);
+    }
+
+    function checkAnswer() {
+      const selected = document.querySelector('input[name="answer"]:checked');
+      const result = document.getElementById("result");
+      if (!selected) {
+        result.textContent = "Por favor selecciona una respuesta.";
+        return;
+      }
+      if (selected.value === correctAnswer) {
+        result.textContent = "✅ ¡Correcto!";
+        result.style.color = "limegreen";
+      } else {
+        result.textContent = `❌ Incorrecto. La respuesta correcta era: ${decodeHTML(correctAnswer)}`;
+        result.style.color = "red";
+      }
+    }
+
+    // Mezclar respuestas
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Decodificar texto HTML
+    function decodeHTML(html) {
+      const txt = document.createElement("textarea");
+      txt.innerHTML = html;
+      return txt.value;
+    }
+
+    getQuestion(); // Cargar al inicio
+  </script>
+</body>
+</html>
+
